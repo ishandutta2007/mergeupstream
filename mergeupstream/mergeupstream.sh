@@ -10,5 +10,6 @@ echo $PARTS[@]
 #git remote add upstream https://github.com/whoever/whatever.git
 #git checkout master
 #git pull upstream master
-#git push
+#git push --set-upstream ishandutta2007 master
+
 
