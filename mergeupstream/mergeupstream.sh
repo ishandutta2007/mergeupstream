@@ -1,15 +1,18 @@
-function join_by { local d=$1; shift; echo -n "$1"; shift; printf "%s" "${@/#/$d}"; }
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# REPO="${PWD##*/}"
+# echo "$REPO"
 DIR="$(pwd)"
 IFS='/' read -ra PARTS <<< "$DIR"
-echo $DIR
-echo $IFS
-echo $PARTS[@]
+REPO="${PARTS[-1]}"
+echo $REPO
 
-#git remote add upstream https://github.com/whoever/whatever.git
-#git checkout master
-#git pull upstream master
-#git push --set-upstream ishandutta2007 master
+FULLURL="$(git config --list|grep remote.origin.url)"
+IFS='/' read -ra PX <<< "$FULLURL"
+GITUSER="${PX[-2]}"
+echo $GITUSER
 
+echo $("curl https://github.com/ishandutta2007/mergeupstream")
+# git remote add upstream https://github.com/whoever/$REPO.git
+# git checkout master
+# git pull upstream master
+# git push --set-upstream $GITUSER master
 
